@@ -11,7 +11,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json .
 COPY package-lock.json .
 
-# Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed)
+# Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed) (clean install)
 RUN npm ci
 
 # Adding the application in app folder
