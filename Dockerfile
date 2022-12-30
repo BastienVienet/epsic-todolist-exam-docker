@@ -16,5 +16,5 @@ COPY . .
 # Exposing the port 3000
 EXPOSE 3000
 
-# Starting the application
+# Start the application
 CMD ["npm", "start"]
