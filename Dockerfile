@@ -4,17 +4,13 @@ FROM node:19-alpine
 # Set the working directory to /app inside the container
 WORKDIR /app
 
-# add `/app/node_modules/.bin` to $PATH (easier to run scripts and executables in the application)
-ENV PATH /app/node_modules/.bin:$PATH
+# Copy the depedencies files to the current directory
+COPY package.json package-lock.json ./
 
-# Copy the depedencies files
-COPY package.json .
-COPY package-lock.json .
-
-# Install dependencies (npm ci makes sure the exact versions in the lockfile gets installed) (clean install)
+# Install dependencies (npm ci makes sure the exact versions gets installed package-lock.json) (clean install)
 RUN npm ci
 
-# Adding the application in app folder
+# Adding the application in app folder after installing all the depedencies
 COPY . .
 
 # Exposing the port 3000
